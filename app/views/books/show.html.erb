@@ -1,5 +1,11 @@
 <div>
   <p>Title：<%= @book.title %></p>
   <p>Opinion：<%= @book.body %></p>
-  <p>ユーザーネーム：<%= @post_image.user.name %></p>
+  <p>ユーザーネーム：<%= @book.user.name %></p>
+  <% if @book.id == current_user.id %>
+    <p><%= link_to "編集", edit_book_path(@book) %></p>
+  <% end %>
+  <% if @book.user == current_user %>
+    <%= link_to "削除", book_path(@book), method: :delete %>
+  <% end %>
 </div>
