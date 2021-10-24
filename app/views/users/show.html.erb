@@ -1,15 +1,5 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-</div>
+<%= render 'users/info', users: @users %>
 
-<% @books.each do |book| %>
-<div>
-  <%= link_to book_path(book.id) do %>
-  <% end %>
-  <p>Name：<%= book.user.name %></p>
-  <p>introduction：<%= book.body %></p>
-</div>
-<% end %>
+<%= render 'books/new', books: @books %>
+
+<%= render 'books/index', books: @books %>
