@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+before_action :authenticate_user!, except: [:top]
   def new
     @book = Book.new
   end
@@ -8,7 +8,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
   if @book.save
-    redirect_to books_path(@book), notice: 'successfully'
+    redirect_to book_path(@book), notice: 'successfully'
   else
     @books = Book.all
     @user = current_user
@@ -25,6 +25,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @user = current_user
+    @books = Book.all
   end
 
   def destroy
