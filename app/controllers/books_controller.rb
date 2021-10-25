@@ -1,6 +1,4 @@
 class BooksController < ApplicationController
-  
-  before_action :authenticate_user!
 
   def new
     @book = Book.new
@@ -12,14 +10,17 @@ class BooksController < ApplicationController
   if @book.save
     redirect_to books_path(@book), notice: 'successfully'
   else
+    @books = Book.all
+    @user = current_user
     flash.now[:alert] = 'error'
     render :index
-  end  
+  end
   end
 
   def index
     @books = Book.all
     @user = current_user
+    @book = Book.new
   end
 
   def show
@@ -30,13 +31,13 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_path
-  end  
-  
+  end
+
   def edit
     @book = Book.find(params[:id])
 
-  end  
-  
+  end
+
 
   def update
     @book = Book.find(params[:id])
@@ -45,8 +46,8 @@ class BooksController < ApplicationController
   else
     flash.now[:alert] = 'error'
     render :edit
-  end    
-  end  
+  end
+  end
 
   private
 
