@@ -1,14 +1,14 @@
 class BooksController < ApplicationController
 before_action :authenticate_user!, except: [:top]
   def new
-    @book = Book.new
+    @newbook = Book.new
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-  if @book.save
-    redirect_to book_path(@book), notice: 'successfully'
+    @newbook = Book.new(book_params)
+    @newbook.user_id = current_user.id
+  if @newbook.save
+    redirect_to book_path(@newbook), notice: 'successfully'
   else
     @books = Book.all
     @user = current_user
@@ -20,13 +20,13 @@ before_action :authenticate_user!, except: [:top]
   def index
     @books = Book.all
     @user = current_user
-    @book = Book.new
+    @newbook = Book.new
   end
 
   def show
     @book = Book.find(params[:id])
     @user = current_user
-    @books = Book.all
+    @newbook = Book.new
   end
 
   def destroy
@@ -58,7 +58,7 @@ before_action :authenticate_user!, except: [:top]
   private
 
   def book_params
-  params.permit(:title, :body)
+  params.require(:book).permit(:title, :body)
   end
 
 end

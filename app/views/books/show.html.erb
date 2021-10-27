@@ -1,6 +1,6 @@
 <%= render 'users/info', users: @users %>
 
-<%= render 'books/new', books: @books %>
+<%= render 'books/new', newbook: @newbook %>
 
 <div class="col-md-8 offset-md-1">
   		<h2>Book detail</h2>
@@ -20,10 +20,10 @@
               <%= @book.body %>
             </td>
             <td>
-              <%= link_to "edit", edit_book_path, class: "btn btn-sm btn-success" %>
+              <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
             </td>
             <td>
-              <%= link_to "destroy", books_path, class: "btn btn-sm btn-danger" %>
+              <%= link_to "Destroy", book_path, method: :delete, class: "btn btn-sm btn-danger" %>
             </td>
           </tr>
         </tbody>
