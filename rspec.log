@@ -308,12 +308,12 @@ Failures:
      [31mFailure/Error: expect(current_path).to eq '/users/' + user.id.to_s[0m
      [31m[0m
      [31m  expected: "/users/2"[0m
-     [31m       got: "/users/1/edit"[0m
+     [31m       got: "/users/1"[0m
      [31m[0m
      [31m  (compared using ==)[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:312:in `block (4 levels) in <main>'[0m
 
-Finished in 19.31 seconds (files took 2.89 seconds to load)
+Finished in 8.46 seconds (files took 5.68 seconds to load)
 [31m198 examples, 5 failures[0m
 
 Failed examples:

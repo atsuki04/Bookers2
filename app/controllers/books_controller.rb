@@ -38,9 +38,9 @@ before_action :authenticate_user!, except: [:top]
   def edit
     @book = Book.find(params[:id])
   if @book.user == current_user
-        render :edit
+    render :edit
   else
-        redirect_to books_path
+    redirect_to books_path
   end
   end
 
